@@ -6,9 +6,9 @@ import (
 
 import (
 	"context"
-	"github.com/NovaProtocol/backend/cli"
-	"github.com/NovaProtocol/backend/dex_engine"
-	"github.com/NovaProtocol/sdk-backend/utils"
+	"github.com/novaprotocolio/backend/cli"
+	"github.com/novaprotocolio/backend/dex_engine"
+	"github.com/novaprotocolio/sdk-backend/utils"
 	"os"
 )
 

@@ -11,18 +11,16 @@ go 1.12
 replace github.com/golang/lint => golang.org/x/lint v0.0.0-20190409202823-959b441ac422
 
 // for local test only
-// replace github.com/ethereum/go-ethereum => ../go-ethereum // v1.8.27
+replace github.com/ethereum/go-ethereum => ../go-ethereum // v1.8.27
 
-// replace github.com/novaprotocolio/sdk-backend => ../sdk-backend
+replace github.com/novaprotocolio/sdk-backend => ../sdk-backend
 
-// replace github.com/novaprotocolio/orderbook => ../novalex-dex-protocol/orderbook
+replace github.com/novaprotocolio/orderbook => ../novalex-dex-protocol/orderbook
 
 require (
-	github.com/novaprotocolio/orderbook v0.0.40
 	github.com/davecgh/go-spew v1.1.1
 	github.com/erikstmartin/go-testdb v0.0.0-20160219214506-8d10e4a1bae5 // indirect
-	//	github.com/ethereum/go-ethereum v0.0.0-00010101000000-000000000000
-	github.com/ethereum/go-ethereum v1.8.27
+	github.com/ethereum/go-ethereum v0.0.0-00010101000000-000000000000
 	github.com/go-playground/validator v9.29.0+incompatible
 	github.com/go-redis/redis v6.15.1+incompatible
 	github.com/jinzhu/gorm v1.9.4
@@ -30,7 +28,8 @@ require (
 	github.com/joho/godotenv v1.3.0
 	github.com/labstack/echo v3.3.10+incompatible
 	github.com/mattn/go-sqlite3 v1.10.0
-	github.com/novaprotocolio/sdk-backend v0.0.40
+	github.com/novaprotocolio/orderbook v0.0.0-00010101000000-000000000000
+	github.com/novaprotocolio/sdk-backend v0.0.39
 	github.com/onrik/ethrpc v0.0.0-20190213081453-aa076c1849e6
 	github.com/satori/go.uuid v1.2.0
 	github.com/shopspring/decimal v0.0.0-20180709203117-cd690d0c9e24

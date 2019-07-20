@@ -2,11 +2,11 @@ package main
 
 import (
 	"context"
-	"github.com/NovaProtocol/backend/cli"
-	"github.com/NovaProtocol/backend/models"
-	"github.com/NovaProtocol/sdk-backend/launcher"
-	"github.com/NovaProtocol/sdk-backend/sdk/ethereum"
-	"github.com/NovaProtocol/sdk-backend/utils"
+	"github.com/novaprotocolio/backend/cli"
+	"github.com/novaprotocolio/backend/models"
+	"github.com/novaprotocolio/sdk-backend/launcher"
+	"github.com/novaprotocolio/sdk-backend/sdk/ethereum"
+	"github.com/novaprotocolio/sdk-backend/utils"
 	_ "github.com/joho/godotenv/autoload"
 	"github.com/shopspring/decimal"
 	"os"

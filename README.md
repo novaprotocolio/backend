@@ -1,17 +1,11 @@
-## Build docker
-
-```bash
-docker build -t novaprotocolio/nova-scaffold-dex-backend:latest .
-```
-
-## Hot reload
+**Hot reload**
 
 ```bash
 cd novalex-dex-starterkit
 yarn watch api
 ```
 
-## Try creating a new market
+**Try creating a new market**
 
         go run cli/admincli/main.go market new HOT-Tri \
           --baseTokenAddress=0x4c4fa7e8ea4cfcfc93deae2c0cff142a1dd3a218 \
@@ -25,7 +19,7 @@ yarn watch api
 
 - This makes the market viewable on the frontend
 
-## Setup environment with testing
+**Setup environment with testing**
 
 Can run docker-compose anywhere within the project
 
