@@ -11,7 +11,6 @@ import (
 	"net/http"
 	"os"
 	"time"
-	"fmt"
 )
 
 var queueService common.IQueue
