@@ -11,11 +11,11 @@ go 1.12
 replace github.com/golang/lint => golang.org/x/lint v0.0.0-20190409202823-959b441ac422
 
 // for local test only
-replace github.com/ethereum/go-ethereum => ../go-ethereum // v1.8.27
+replace github.com/ethereum/go-ethereum => ../novalex // v1.8.27
 
 replace github.com/novaprotocolio/sdk-backend => ../sdk-backend
 
-replace github.com/novaprotocolio/orderbook => ../novalex-dex-protocol/orderbook
+replace github.com/novaprotocolio/orderbook => ../orderbook
 
 require (
 	github.com/davecgh/go-spew v1.1.1
