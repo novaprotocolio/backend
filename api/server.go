@@ -158,6 +158,9 @@ func StartServer(ctx context.Context, startMetric func()) {
 	//init database
 	models.Connect(os.Getenv("NSK_DATABASE_URL"))
 
+	//Config key generator
+	models.ConfigKeyGenerator(os.Getenv("NSK_MASTER_KEY"))
+
 	CacheService, _ = common.InitKVStore(
 		&common.RedisKVStoreConfig{
 			Ctx:    ctx,
