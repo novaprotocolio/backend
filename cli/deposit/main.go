@@ -77,9 +77,9 @@ func main() {
 
 	// Init Blockchain Client
 	nova := ethereum.NewEthereumNova(os.Getenv("ETHEREUM_BLOCKCHAIN_RPC_URL"), os.Getenv("NSK_HYBRID_EXCHANGE_ADDRESS"))
-	// if os.Getenv("NSK_LOG_LEVEL") == "DEBUG" {
-	// 	nova.EnableDebug(true)
-	// }
+	if os.Getenv("NSK_LOG_LEVEL") == "DEBUG" {
+		nova.EnableDebug(true)
+	}
 
 	// init Key/Value Store
 	kvStore, err := common.InitKVStore(&common.RedisKVStoreConfig{

@@ -121,17 +121,19 @@ func getEchoServer() *echo.Echo {
 	// e.Debugf = true
 
 	e.HTTPErrorHandler = errorHandler
-
-	e.Use(middleware.Logger())
 	e.Use(recoverHandler)
 
-	// The BodyDump plugin is used for debug, you can uncomment these lines to see request and response body
-	// More details goes https://echo.labstack.com/middleware/body-dump
-	//
-	// e.Use(middleware.BodyDump(func(c echo.Context, reqBody, resBody []byte) {
-	// 	utils.Debugf("Header: %s", c.Request().Header)
-	// 	utils.Debugf("Url: %s, Request Body: %s; Response Body: %s", c.Request().RequestURI, string(reqBody), string(resBody))
-	// }))
+	if os.Getenv("NSK_LOG_LEVEL") == "INFO" {
+		e.Use(middleware.Logger())
+	} else if os.Getenv("NSK_LOG_LEVEL") == "DEBUG" {
+		// The BodyDump plugin is used for debug, you can uncomment these lines to see request and response body
+		// More details goes https://echo.labstack.com/middleware/body-dump
+		//
+		e.Use(middleware.BodyDump(func(c echo.Context, reqBody, resBody []byte) {
+			utils.Debugf("Header: %s", c.Request().Header)
+			utils.Debugf("Url: %s, Request Body: %s; Response Body: %s", c.Request().RequestURI, string(reqBody), string(resBody))
+		}))
+	}	
 
 	e.Use(middleware.CORSWithConfig(middleware.CORSConfig{
 		AllowOrigins: []string{"*"},
