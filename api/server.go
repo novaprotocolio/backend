@@ -8,15 +8,15 @@ import (
 	"runtime"
 	"time"
 
+	"github.com/go-playground/validator"
+	"github.com/labstack/echo"
+	"github.com/labstack/echo/middleware"
 	"github.com/novaprotocolio/backend/connection"
 	"github.com/novaprotocolio/backend/models"
 	"github.com/novaprotocolio/sdk-backend/common"
 	"github.com/novaprotocolio/sdk-backend/sdk"
 	"github.com/novaprotocolio/sdk-backend/sdk/ethereum"
 	"github.com/novaprotocolio/sdk-backend/utils"
-	"github.com/go-playground/validator"
-	"github.com/labstack/echo"
-	"github.com/labstack/echo/middleware"	
 )
 
 var CacheService common.IKVStore
@@ -58,7 +58,9 @@ func loadRoutes(e *echo.Echo) {
 	addRoute(e, "DELETE", "/orders/:orderID", &CancelOrderReq{}, CancelOrder, authMiddleware)
 	addRoute(e, "GET", "/account/lockedBalances", &LockedBalanceReq{}, GetLockedBalance, authMiddleware)
 
-	addRoute(e, "GET", "/deposit/schema", &DepositResq{}, GetSchemaVersion)
+	addRoute(e, "GET", "/deposit/schema", &DepositGetSchemaResq{}, GetSchemaVersion)
+	addRoute(e, "GET", "/deposit/generate-address", &DepositGenAddrResq{}, GetGenerateAddress)
+	addRoute(e, "GET", "/deposit/history", &DepositHistoryResq{}, GetDepositHistory)
 }
 
 func addRoute(e *echo.Echo, method, url string, param Param, handler func(p Param) (interface{}, error), middlewares ...echo.MiddlewareFunc) {
@@ -157,6 +159,9 @@ func StartServer(ctx context.Context, startMetric func()) {
 
 	//init database
 	models.Connect(os.Getenv("NSK_DATABASE_URL"))
+
+	//Config key generator
+	models.ConfigKeyGenerator(os.Getenv("NSK_MASTER_KEY"))
 
 	CacheService, _ = common.InitKVStore(
 		&common.RedisKVStoreConfig{

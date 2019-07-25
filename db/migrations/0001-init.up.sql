@@ -116,6 +116,17 @@ create table launch_logs(
   updated_at  timestamp,
   created_at  timestamp
 );
+
+create table deposit(
+  id SERIAL PRIMARY KEY,
+  base_address text not null unique,
+  quote_address text,
+  block_number integer,
+  current_block_number integer,
+  status text not null,
+  txt_reciver text[]
+);
+
 create index idx_launch_logs_nonce on launch_logs (nonce);
 create index idx_created_at on launch_logs (created_at);
 create unique index idx_launch_logs_transaction_hash on launch_logs (transaction_hash);
