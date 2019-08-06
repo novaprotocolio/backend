@@ -2,8 +2,8 @@ package api
 
 import (
 	"github.com/novaprotocolio/backend/models"
-	"github.com/shopspring/decimal"
 	"github.com/novaprotocolio/orderbook/protocol"
+	"github.com/shopspring/decimal"
 )
 
 type (
@@ -167,13 +167,31 @@ type (
 		AsTakerFeeRate        decimal.Decimal `json:"asTakerFeeRate"`
 	}
 
-	DepositResq struct {
+	DepositGetSchemaResq struct {
 		BaseReq
 		Schema uint64
 	}
 
-	DepositResp struct {
+	DepositGetSchemaResp struct {
 		Schema uint64
+	}
+
+	DepositGenAddrResq struct {
+		BaseReq
+		UserAddr string
+	}
+
+	DepositGenAddrResp struct {
+		GeneratedAddr string
+		Status        string
+	}
+
+	DepositHistoryResq struct {
+		BaseReq
+		UserAddr string
+	}
+	DepositHistoryResp struct {
+		History []string
 	}
 )
 

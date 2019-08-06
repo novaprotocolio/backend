@@ -154,9 +154,10 @@ func PlaceOrder(p Param) (interface{}, error) {
 
 	if err != nil {
 		return nil, errors.New("place order failed, place try again")
-	} else {
-		return nil, nil
-	}
+	} 
+	
+	return nil, nil
+	
 }
 
 func getCacheOrderByOrderID(orderID string) *CacheOrder {
